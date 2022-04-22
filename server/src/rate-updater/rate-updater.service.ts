@@ -6,7 +6,7 @@ export class RateUpdaterService {
   private readonly logger = new Logger(RateUpdaterService.name);
 
   @Cron(CronExpression.EVERY_30_SECONDS)
-  handleCron() {
+  updateRate() {
     this.logger.debug('Called when the current second is 30');
   }
 }

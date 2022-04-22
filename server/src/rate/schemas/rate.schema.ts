@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import * as mongoose from 'mongoose';
 import { Document } from 'mongoose';
 import { Currency } from './currency.schema';
 
@@ -10,9 +11,9 @@ export class Rate {
   name: string;
 
   @Prop({ required: true })
-  data: string;
+  date: string;
 
-  @Prop({ required: true })
+  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Currency' }] })
   currencies: Currency[];
 }
 
