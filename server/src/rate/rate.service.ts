@@ -15,7 +15,10 @@ export class RateService {
   ) {}
 
   async create(dto: CreateRateDto): Promise<Rate> {
-    const rate = await this.rateModel.create({ ...dto });
+    const rate = await this.rateModel.create({
+      ...dto,
+      date: new Date().toISOString(),
+    });
     return rate;
   }
 
@@ -24,7 +27,8 @@ export class RateService {
       .find()
       .limit(take)
       .skip(offset)
-      .populate('currencies');
+      .populate('currencies')
+      .sort({ date: '-1' });
     return rates;
   }
 
