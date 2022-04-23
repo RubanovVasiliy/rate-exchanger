@@ -5,7 +5,6 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { Rate, RateSchema } from './schemas/rate.schema';
 import { Currency, CurrencySchema } from './schemas/currency.schema';
 import { HttpModule } from '@nestjs/axios';
-import { RateUpdaterService } from 'src/rate-updater/rate-updater.service';
 import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
@@ -18,6 +17,6 @@ import { ScheduleModule } from '@nestjs/schedule';
     ScheduleModule.forRoot(),
   ],
   controllers: [RateController],
-  providers: [RateService, RateUpdaterService],
+  providers: [RateService],
 })
 export class RateModule {}

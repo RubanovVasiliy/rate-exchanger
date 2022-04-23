@@ -14,12 +14,12 @@ export class RateService {
     @InjectModel(Currency.name) private currencyModel: Model<CurrencyDocument>,
   ) {}
 
-  async create(dto: CreateRateDto): Promise<Rate> {
+  async create(dto: CreateRateDto): Promise<ObjectId> {
     const rate = await this.rateModel.create({
       ...dto,
       date: new Date().toISOString(),
     });
-    return rate;
+    return rate._id;
   }
 
   async findAll(take = 7, offset = 0): Promise<Rate[]> {

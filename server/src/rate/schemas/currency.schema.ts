@@ -7,7 +7,7 @@ export type CurrencyDocument = Currency & Document;
 
 @Schema()
 export class Currency {
-  @Prop({ required: true, unique: true })
+  @Prop({ required: true })
   ID: string;
 
   @Prop({ required: true })
