@@ -8,7 +8,7 @@ import { RateModule } from './rate/rate.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ envFilePath: '.development.env' }),
-    MongooseModule.forRoot(process.env.DB_URI),
+    MongooseModule.forRoot(process.env.DB_URI, {}),
     RateModule,
   ],
   controllers: [AppController],
