@@ -3,3 +3,29 @@
 .h100 {
     height: calc(100vh - 64px);
 }
+
+.spin {
+    margin: 20px 0;
+    margin-bottom: 20px;
+    padding: 30px 50px;
+    text-align: center;
+    align-items: center;
+    border-radius: 4px;
+  }
+
+  .mt20 {
+      margin-top: 20px;
+  }
+
+  .card {
+      align-self: center;
+  }
+
+  @media all and (max-width: 550px) {
+    .mt20 {
+        margin-top: 10px;
+    }
+    .exchanger-layout {
+        margin-left: calc(50vw - 128px)
+    }
+}

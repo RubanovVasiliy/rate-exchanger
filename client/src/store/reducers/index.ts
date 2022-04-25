@@ -1,6 +1,7 @@
- import auth from './auth'
+import auth from './auth';
+import rate from './rate';
 
-
- export default {
-    auth
- }
+export default {
+  auth,
+  rate,
+};

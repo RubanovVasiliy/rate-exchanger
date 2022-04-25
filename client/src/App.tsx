@@ -16,7 +16,7 @@ const { setUser, setIsAuth } = useActions()
     })
     
     return (
-        <Layout>
+        <Layout >
             <Navbar/>
             <Layout.Content>
                 <AppRouter/>

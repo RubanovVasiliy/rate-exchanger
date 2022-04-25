@@ -1,33 +1,30 @@
 import { IRate } from '../../../models/IRate';
 
-export interface ExchangerState {
+export interface RateState {
   isLoading: boolean;
   rate: IRate;
   error: string;
 }
 
-export enum ExchangerActionEnum {
+export enum RateActionEnum {
   SET_IS_LOADING = 'SET_IS_LOADING',
   SET_RATE = 'SET_RATE',
   SET_ERROR = 'SET_ERROR',
 }
 
 export interface SetIsLoadingAction {
-  type: ExchangerActionEnum.SET_IS_LOADING;
+  type: RateActionEnum.SET_IS_LOADING;
   payload: boolean;
 }
 
 export interface SetRateAction {
-  type: ExchangerActionEnum.SET_RATE;
+  type: RateActionEnum.SET_RATE;
   payload: IRate;
 }
 
 export interface SetErrorAction {
-  type: ExchangerActionEnum.SET_ERROR;
+  type: RateActionEnum.SET_ERROR;
   payload: string;
 }
 
-export type ExchangerAction =
-  | SetIsLoadingAction
-  | SetRateAction
-  | SetErrorAction;
+export type RateAction = SetIsLoadingAction | SetRateAction | SetErrorAction;
