@@ -14,7 +14,7 @@ export const AuthActionCreators = {
     type: AuthActionEnum.SET_IS_AUTH,
     payload: payload,
   }),
-  setIsLoading: (payload: boolean): SetIsLoadingAction => ({
+  setIsLoadingAuth: (payload: boolean): SetIsLoadingAction => ({
     type: AuthActionEnum.SET_IS_LOADING,
     payload: payload,
   }),
@@ -29,7 +29,7 @@ export const AuthActionCreators = {
   login:
     (username: string, password: string) => async (dispatch: AppDispatch) => {
       try {
-        dispatch(AuthActionCreators.setIsLoading(true));
+        dispatch(AuthActionCreators.setIsLoadingAuth(true));
         setTimeout(async () => {
           const response = await UserService.getUsers();
           const mockUser = response.data.find(
@@ -43,7 +43,7 @@ export const AuthActionCreators = {
           } else {
             dispatch(AuthActionCreators.setError('Wrong username or password'));
           }
-          dispatch(AuthActionCreators.setIsLoading(false));
+          dispatch(AuthActionCreators.setIsLoadingAuth(false));
         }, 1000);
       } catch (e) {
         dispatch(AuthActionCreators.setError('Login error'));

@@ -1,4 +1,4 @@
-import { Col, Divider, Layout, Row, Space, Spin } from 'antd';
+import { Col, Layout, Row, Space, Spin } from 'antd';
 import {FC, useEffect} from 'react';
 import CurrenciesTable from '../components/CurrenciesTable';
 import Exchanger from '../components/Exchanger';
@@ -28,9 +28,9 @@ const Exchange: FC = () => {
                             <Layout>
                                 <Exchanger/>
                             </Layout>    
-                            <Layout>
+                             <Layout>
                                 <CurrenciesTable/>
-                            </Layout>                
+                            </Layout>                 
                         </Space>
                     </Layout>
                 }

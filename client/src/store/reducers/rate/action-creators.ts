@@ -3,13 +3,15 @@ import RateService from '../../../api/RatesServise';
 import { IRate } from '../../../models/IRate';
 import {
   RateActionEnum,
+  SetCurrencyAction,
   SetErrorAction,
   SetIsLoadingAction,
   SetRateAction,
+  SetValueAction,
 } from './types';
 
 export const RateActionCreators = {
-  setIsLoading: (payload: boolean): SetIsLoadingAction => ({
+  setIsLoadingRate: (payload: boolean): SetIsLoadingAction => ({
     type: RateActionEnum.SET_IS_LOADING,
     payload: payload,
   }),
@@ -23,11 +25,11 @@ export const RateActionCreators = {
   }),
   load: () => async (dispatch: AppDispatch) => {
     try {
-      dispatch(RateActionCreators.setIsLoading(true));
+      dispatch(RateActionCreators.setIsLoadingRate(true));
       setTimeout(async () => {
         const response = await RateService.getRate();
         dispatch(RateActionCreators.setRate(response.data));
-        dispatch(RateActionCreators.setIsLoading(false));
+        dispatch(RateActionCreators.setIsLoadingRate(false));
       }, 1000);
     } catch (e) {
       dispatch(
@@ -35,4 +37,19 @@ export const RateActionCreators = {
       );
     }
   },
+
+  onChangeCurrency: (name: string, value: string): SetCurrencyAction => ({
+    type: RateActionEnum.SET_CURRENCY,
+    payload: {
+      name: name,
+      value: value,
+    },
+  }),
+  onChangeValue: (name: string, value: number): SetValueAction => ({
+    type: RateActionEnum.SET_VALUE,
+    payload: {
+      name: name,
+      value: value,
+    },
+  }),
 };

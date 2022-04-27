@@ -12,6 +12,9 @@
     align-items: center;
     border-radius: 4px;
   }
+  .w200px {
+      width: 200px;
+  }
 
   .mt20 {
       margin-top: 20px;
