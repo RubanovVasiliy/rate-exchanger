@@ -19,7 +19,7 @@ export default function RateReducer(
   action: RateAction
 ): RateState {
   switch (action.type) {
-    case RateActionEnum.SET_IS_LOADING:
+    case RateActionEnum.SET_IS_LOADING_RATE:
       return { ...state, isLoading: action.payload };
 
     case RateActionEnum.SET_RATE:
@@ -40,7 +40,6 @@ export default function RateReducer(
             4
           )
         );
-        console.log(action.payload.value, currencyOutValue, currencyInValue);
         return {
           ...state,
           exchanger: {
@@ -56,7 +55,6 @@ export default function RateReducer(
             4
           )
         );
-        console.log(action.payload.value, currencyInValue, currencyOutValue);
         return {
           ...state,
           exchanger: {
@@ -78,7 +76,6 @@ export default function RateReducer(
         const newValue: number = parseFloat(
           ((state.exchanger.valueIn * currOutValue) / currInValue).toFixed(4)
         );
-        console.log(state.exchanger.valueIn, currOutValue, currInValue);
         return {
           ...state,
           exchanger: {
@@ -97,7 +94,6 @@ export default function RateReducer(
         const newValue: number = parseFloat(
           ((state.exchanger.valueIn * currInValue) / currOutValue).toFixed(4)
         );
-        console.log(state.exchanger.valueIn, currOutValue, currInValue);
         return {
           ...state,
           exchanger: {

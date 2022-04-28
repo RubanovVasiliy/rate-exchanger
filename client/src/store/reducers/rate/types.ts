@@ -9,7 +9,7 @@ export interface RateState {
 }
 
 export enum RateActionEnum {
-  SET_IS_LOADING = 'SET_IS_LOADING',
+  SET_IS_LOADING_RATE = 'SET_IS_LOADING_RATE',
   SET_RATE = 'SET_RATE',
   SET_ERROR = 'SET_ERROR',
   SET_CURRENCY = 'SET_CURRENCY',
@@ -17,7 +17,7 @@ export enum RateActionEnum {
 }
 
 export interface SetIsLoadingAction {
-  type: RateActionEnum.SET_IS_LOADING;
+  type: RateActionEnum.SET_IS_LOADING_RATE;
   payload: boolean;
 }
 

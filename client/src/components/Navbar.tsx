@@ -22,11 +22,11 @@ const Navbar = () => {
                             <Menu.Item
                                 onClick={logout}
                                 key={1}
-                            >Logout</Menu.Item>
+                            >Выйти</Menu.Item>
                         </>
                         :
                         <>
-                            <Menu.Item onClick={() => navigate(RouteNames.LOGIN)} key={1}>Login</Menu.Item>
+                            <Menu.Item onClick={() => navigate(RouteNames.LOGIN)} key={1}>Войти</Menu.Item>
                         </>
                     }
                 </Menu>

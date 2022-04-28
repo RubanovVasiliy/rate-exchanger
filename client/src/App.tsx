@@ -10,7 +10,10 @@ function App() {
 const { setUser, setIsAuth } = useActions()
     useEffect(() => {
         if(localStorage.getItem('auth')){
-            setUser({username: localStorage.getItem('username'||'')} as IUser)
+            setUser({
+                username: localStorage.getItem('username'||''),
+                accessToken: localStorage.getItem('accessToken')
+            } as IUser)
             setIsAuth(true)
         }
     })

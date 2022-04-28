@@ -17,7 +17,7 @@ const LoginForm: FC = () => {
         return (
             <Form onFinish={submit}>
                 {error && <div style={{color: 'red'}}>{error}</div>}
-                <Form.Item label="Username">
+                <Form.Item label="Логин">
                     <Form.Item
                         noStyle
                         name="username"
@@ -29,7 +29,7 @@ const LoginForm: FC = () => {
                         />
                     </Form.Item>
                 </Form.Item>
-                <Form.Item label="Password">
+                <Form.Item label="Пароль">
                     <Form.Item
                         noStyle
                         name="password"
@@ -44,7 +44,7 @@ const LoginForm: FC = () => {
 
                 <Form.Item wrapperCol={{offset: 8, span: 16}}>
                     <Button type="primary" htmlType="submit" loading={isLoading}>
-                        Submit
+                        Войти
                     </Button>
                 </Form.Item>
             </Form>

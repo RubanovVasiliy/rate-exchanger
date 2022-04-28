@@ -12,7 +12,7 @@ import {
 
 export const RateActionCreators = {
   setIsLoadingRate: (payload: boolean): SetIsLoadingAction => ({
-    type: RateActionEnum.SET_IS_LOADING,
+    type: RateActionEnum.SET_IS_LOADING_RATE,
     payload: payload,
   }),
   setRate: (rate: IRate): SetRateAction => ({
@@ -23,14 +23,12 @@ export const RateActionCreators = {
     type: RateActionEnum.SET_ERROR,
     payload: payload,
   }),
-  load: () => async (dispatch: AppDispatch) => {
+  load: (accessToken: string) => async (dispatch: AppDispatch) => {
     try {
       dispatch(RateActionCreators.setIsLoadingRate(true));
-      setTimeout(async () => {
-        const response = await RateService.getRate();
-        dispatch(RateActionCreators.setRate(response.data));
-        dispatch(RateActionCreators.setIsLoadingRate(false));
-      }, 1000);
+      const response = await RateService.getRate(accessToken, 1);
+      dispatch(RateActionCreators.setRate(response.data[0]));
+      dispatch(RateActionCreators.setIsLoadingRate(false));
     } catch (e) {
       dispatch(
         RateActionCreators.setError('The Rate is currently unavailable')

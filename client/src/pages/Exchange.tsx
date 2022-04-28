@@ -8,9 +8,11 @@ import { useTypedSelector } from '../hooks/useTypedSelector';
 const Exchange: FC = () => {
     const {load} = useActions()
     const {isLoading} = useTypedSelector(store=>store.rate)
+    const {user} = useTypedSelector(store=>store.auth)
+
 
     useEffect(() => {
-        load()
+        load(user.accessToken)
     },[])
 
     return (
