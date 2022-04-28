@@ -14,7 +14,7 @@ export class RateUpdaterService {
     private readonly rateService: RateService,
   ) {}
 
-  @Cron(CronExpression.EVERY_DAY_AT_10AM)
+  @Cron(CronExpression.EVERY_5_MINUTES)
   updateRate() {
     this.httpRequestService.getRateXML(this.url).then((xml) => {
       xml2js.parseString(xml, (err, res) => {
