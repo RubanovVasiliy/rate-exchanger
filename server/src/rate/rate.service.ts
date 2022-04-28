@@ -14,9 +14,12 @@ export class RateService {
     @InjectModel(Currency.name) private currencyModel: Model<CurrencyDocument>,
   ) {}
 
-  async create(dto: CreateRateDto): Promise<Rate> {
-    const rate = await this.rateModel.create({ ...dto });
-    return rate;
+  async create(dto: CreateRateDto): Promise<ObjectId> {
+    const rate = await this.rateModel.create({
+      ...dto,
+      date: new Date().toISOString(),
+    });
+    return rate._id;
   }
 
   async findAll(take = 7, offset = 0): Promise<Rate[]> {
@@ -24,7 +27,8 @@ export class RateService {
       .find()
       .limit(take)
       .skip(offset)
-      .populate('currencies');
+      .populate('currencies')
+      .sort({ date: '-1' });
     return rates;
   }
 
