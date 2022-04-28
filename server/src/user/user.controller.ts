@@ -7,13 +7,14 @@ import {
   Patch,
   Param,
   Delete,
-  Res,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './schemas/user.schema';
 import mongoose from 'mongoose';
+import { Request, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('user')
 export class UserController {
@@ -45,5 +46,11 @@ export class UserController {
   @Delete(':id')
   delete(@Param('id') id: ObjectId): Promise<mongoose.Schema.Types.ObjectId> {
     return this.userService.delete(id);
+  }
+
+  @UseGuards(AuthGuard('local'))
+  @Post('auth/login')
+  async login(@Request() req) {
+    return req.user;
   }
 }

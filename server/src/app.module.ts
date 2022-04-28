@@ -6,8 +6,8 @@ import { ConfigModule } from '@nestjs/config';
 import { RateModule } from './rate/rate.module';
 import { RateUpdaterModule } from './rate-updater/rate-updater.module';
 import { HttpRequestModule } from './http-request/http-request.module';
-import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -16,8 +16,8 @@ import { AuthModule } from './auth/auth.module';
     RateModule,
     RateUpdaterModule,
     HttpRequestModule,
-    UserModule,
     AuthModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
