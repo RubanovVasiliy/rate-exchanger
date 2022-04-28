@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import { ObjectId } from 'mongoose';
 import { RateService } from './rate.service';
@@ -16,7 +17,9 @@ import { CreateCurrencyDto } from './dto/create-currency.dto';
 import { Currency } from './schemas/currency.schema';
 import mongoose from 'mongoose';
 import { Rate } from './schemas/rate.schema';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
+@UseGuards(JwtAuthGuard)
 @Controller('rate')
 export class RateController {
   constructor(private readonly rateService: RateService) {}

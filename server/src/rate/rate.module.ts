@@ -6,6 +6,8 @@ import { Rate, RateSchema } from './schemas/rate.schema';
 import { Currency, CurrencySchema } from './schemas/currency.schema';
 import { HttpModule } from '@nestjs/axios';
 import { ScheduleModule } from '@nestjs/schedule';
+import { RateUpdaterService } from 'src/rate-updater/rate-updater.service';
+import { HttpRequestService } from 'src/http-request/http-request.service';
 
 @Module({
   imports: [
@@ -17,6 +19,6 @@ import { ScheduleModule } from '@nestjs/schedule';
     ScheduleModule.forRoot(),
   ],
   controllers: [RateController],
-  providers: [RateService],
+  providers: [RateService, RateUpdaterService, HttpRequestService],
 })
 export class RateModule {}

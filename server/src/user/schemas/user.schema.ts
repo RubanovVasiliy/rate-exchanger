@@ -6,7 +6,7 @@ export type UserDocument = User & Document;
 @Schema()
 export class User {
   @Prop({ required: true, unique: true })
-  name: string;
+  username: string;
 
   @Prop({ required: true })
   password: string;

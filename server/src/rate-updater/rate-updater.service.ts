@@ -22,22 +22,23 @@ export class RateUpdaterService {
           date: res?.ValCurs?.$?.Date,
           name: res?.ValCurs?.$?.name,
         });
-        rateId.then((rateId) => {
-          res.ValCurs.Valute.forEach((currency) => {
-            this.rateService.addCurrency({
-              rateId: rateId,
-              ID: currency.$.ID,
-              numCode: currency.NumCode[0],
-              charCode: currency.CharCode[0],
-              nominal: currency.Nominal[0],
-              name: currency.Name[0],
-              value: currency.Value[0],
+        rateId
+          .then((rateId) => {
+            res.ValCurs.Valute.forEach((currency) => {
+              this.rateService.addCurrency({
+                rateId: rateId,
+                ID: currency.$.ID,
+                numCode: currency.NumCode[0],
+                charCode: currency.CharCode[0],
+                nominal: currency.Nominal[0],
+                name: currency.Name[0],
+                value: currency.Value[0],
+              });
             });
-          });
-        });
+          })
+          .then(() => this.logger.log('Сurrency rates have been updated'))
+          .catch(() => this.logger.error('Data fetching error from'));
       });
     });
-
-    this.logger.debug('Called when the current second is 30');
   }
 }

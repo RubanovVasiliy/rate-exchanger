@@ -10,18 +10,18 @@ import * as bcrypt from 'bcryptjs';
 export class UserService {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
-  async createUser(dto: CreateUserDto): Promise<ObjectId> {
-    const user = await this.userModel.findOne({ name: dto.name });
+  async createUser(dto: CreateUserDto): Promise<User> {
+    const user = await this.userModel.findOne({ username: dto.username });
     if (user) {
       throw new BadRequestException('User is already registered');
     }
     const salt = bcrypt.genSaltSync(10);
     const passwordHash = bcrypt.hashSync(dto.password, salt);
     const newUser = await this.userModel.create({
-      name: dto.name,
+      username: dto.username,
       password: passwordHash,
     });
-    return newUser._id;
+    return newUser;
   }
 
   async findAll(): Promise<User[]> {
@@ -29,8 +29,8 @@ export class UserService {
     return users;
   }
 
-  async findOneByName(name: string): Promise<User> {
-    const user = await this.userModel.findOne({ name: name });
+  async findOneByName(username: string): Promise<User> {
+    const user = await this.userModel.findOne({ username: username });
     return user;
   }
 
